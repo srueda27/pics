@@ -5,8 +5,17 @@ class SearchBar extends React.Component {
     inputValue: ''
   }
 
-  onFormSubmit(event) {
+  /**
+   * Another way to solve the undefined 'this' issue 
+   * constructor() {
+   *  this.state = this.state.bind(this);
+   * }
+   */
+  
+  onFormSubmit = event => {
     event.preventDefault();
+
+    this.props.onSubmit(this.state.inputValue);
   }
 
   //onChange att is a callback function so the reference to the method needs to be without parentesis
